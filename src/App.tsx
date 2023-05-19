@@ -5,8 +5,8 @@ export default function App() {
   const query = useQuery({ queryKey: ["tracks"], queryFn: getTopTracks });
   return (
     <ul>
-      {query?.data?.map(({ name, artists }) => (
-        <li>
+      {query?.data?.items.map(({ name, artists }) => (
+        <li key={name}>
           {name} by {artists.map((artist) => artist.name).join(", ")}
         </li>
       ))}
