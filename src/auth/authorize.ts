@@ -13,7 +13,7 @@ export async function redirectToAuthCodeFlow() {
   const state = generateRandomString(16);
   const scope = "user-read-private user-read-email";
 
-  localStorage.setItem("code_verifier", codeVerifier);
+  sessionStorage.setItem("code_verifier", codeVerifier);
 
   const params = new URLSearchParams();
   params.append("response_type", "code");
@@ -30,7 +30,7 @@ export async function redirectToAuthCodeFlow() {
 export async function getAccessToken(): Promise<any> {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
-  const codeVerifier = localStorage.getItem("code_verifier");
+  const codeVerifier = sessionStorage.getItem("code_verifier");
 
   if (codeVerifier && code) {
     const params = new URLSearchParams();
@@ -46,13 +46,13 @@ export async function getAccessToken(): Promise<any> {
       body: params,
     });
 
-    console.log("## result 1", result);
+    console.log("## getAccessToken 1", result);
 
     const resultJson = await result.json();
-    console.log("## result 2", resultJson);
+    console.log("## getAccessToken 2", resultJson);
     if (resultJson?.access_token) {
-      localStorage.setItem("access_token", resultJson.access_token);
-      localStorage.setItem("refresh_token", resultJson.refresh_token);
+      sessionStorage.setItem("access_token", resultJson.access_token);
+      sessionStorage.setItem("refresh_token", resultJson.refresh_token);
     }
 
     return resultJson?.access_token;
@@ -60,7 +60,7 @@ export async function getAccessToken(): Promise<any> {
 }
 
 export async function handleRefreshToken(): Promise<any> {
-  const refreshToken = localStorage.getItem("refresh_token");
+  const refreshToken = sessionStorage.getItem("refresh_token");
   console.log("## calling");
   if (refreshToken) {
     const params = new URLSearchParams();
@@ -74,9 +74,9 @@ export async function handleRefreshToken(): Promise<any> {
       body: params,
     });
 
-    console.log("## result 1", result);
+    console.log("## handleRefreshToken 1", result);
 
     const resultJson = await result.json();
-    console.log("## result 2", resultJson);
+    console.log("## handleRefreshToken 2", resultJson);
   }
 }

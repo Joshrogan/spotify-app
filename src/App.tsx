@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     if (code) {
-      const accessToken = localStorage.getItem("access_token");
+      const accessToken = sessionStorage.getItem("access_token");
       if (accessToken) {
         fetch("https://api.spotify.com/v1/me", {
           headers: {
@@ -25,7 +25,7 @@ export default function App() {
         getAccessToken();
       }
     }
-  }, [code]);
+  }, [code, test]);
 
   const handleClick = async () => {
     try {
