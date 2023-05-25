@@ -1,53 +1,35 @@
-import { useEffect, useState } from "react";
-import {
-  redirectToAuthCodeFlow,
-  getAccessToken,
-  handleRefreshToken,
-} from "./auth/authorize";
+import { RouterProvider, Router, Route, RootRoute } from "@tanstack/router";
+import About from "./components/About";
+import Index from "./components/Index";
 
+// Create a root route
+const rootRoute = new RootRoute();
+
+// Create an index route
+const indexRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: Index,
+});
+
+const aboutRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/about",
+  component: About,
+});
+
+// Create the route tree using your routes
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute]);
+
+// Create the router using your route tree
+const router = new Router({ routeTree });
+
+// Register your router for maximum type safety
+declare module "@tanstack/router" {
+  interface Register {
+    router: typeof router;
+  }
+}
 export default function App() {
-  const [test, setTest] = useState("");
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get("code");
-
-  useEffect(() => {
-    if (code) {
-      const accessToken = sessionStorage.getItem("access_token");
-      if (accessToken) {
-        fetch("https://api.spotify.com/v1/me", {
-          headers: {
-            Authorization: "Bearer " + accessToken,
-          },
-        })
-          .then((data) => data.json())
-          .then((result) => setTest(result.display_name));
-      } else {
-        getAccessToken();
-      }
-    }
-  }, [code, test]);
-
-  const handleClick = async () => {
-    try {
-      await redirectToAuthCodeFlow();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleRefresh = async () => {
-    try {
-      await handleRefreshToken();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  return (
-    <div>
-      <button onClick={handleClick}>Fetch data</button>
-      <button onClick={handleRefresh}>Refresh</button>
-      {test}
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
