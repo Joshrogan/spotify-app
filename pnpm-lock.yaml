@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@tanstack/react-query': ^4.29.7
   '@tanstack/router': 0.0.1-beta.89
+  '@tanstack/router-devtools': 0.0.1-beta.89
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
   '@typescript-eslint/eslint-plugin': ^5.57.1
@@ -24,6 +25,7 @@ specifiers:
 dependencies:
   '@tanstack/react-query': 4.29.7_biqbaboplfbrettd7655fr4n2y
   '@tanstack/router': 0.0.1-beta.89_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/router-devtools': 0.0.1-beta.89_biqbaboplfbrettd7655fr4n2y
   axios: 1.4.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -631,6 +633,20 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
+  /@tanstack/router-devtools/0.0.1-beta.89_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-b7YneX+wa0Ln/DAkQtPN2iDXzizbjPfZU+ywnTwDK0LAU915UmU8bQpVZ/z6aRUSW+2LZr+/VS2fth1LnP++wg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@babel/runtime': 7.21.5
+      '@tanstack/router': 0.0.1-beta.89_biqbaboplfbrettd7655fr4n2y
+      date-fns: 2.30.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@tanstack/router/0.0.1-beta.89_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-HSQshMk1+keZ/veRKW5BzE3xXBG/Cdhxuu3D4FiVft71Q9Io++PyokGxcFmjSgmMmM070lQaIAY36CfKAesQgQ==}
     engines: {node: '>=12'}
@@ -1062,6 +1078,13 @@ packages:
   /csstype/3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: true
+
+  /date-fns/2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.21.5
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

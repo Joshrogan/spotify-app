@@ -40,3 +40,16 @@ https://github.com/spotify/web-api-examples/blob/999766d548700de77f15b294df8b965
 got auth working ish for 0. just work on refresh then get it working well to step 1
 
 refresh working once? https://community.spotify.com/t5/Spotify-for-Developers/Refreshing-tokens-for-PKCE-authorised-users/td-p/5023175
+
+## Tanstack router
+
+https://github.com/TanStack/router/discussions/92
+
+authenticated login, kitchen sink example + search auth in discord
+
+https://stackblitz.com/edit/tanstack-router-sjkunz?file=src%2Fmain.tsx
+
+another exampleish:
+https://stackoverflow.com/questions/72466016/how-to-check-if-user-is-logged-by-localstorage-and-redirect-according-to-it
+
+## https://frontendmasters.com/courses/web-auth-apis/ do this after definitely
