@@ -1,5 +1,5 @@
 import { Route } from "@tanstack/router";
-import rootRoute from "./Root";
+import rootRoute from "./root";
 
 const aboutRoute = new Route({
   getParentRoute: () => rootRoute,

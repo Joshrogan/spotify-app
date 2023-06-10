@@ -80,3 +80,7 @@ export async function handleRefreshToken(): Promise<any> {
     console.log("## handleRefreshToken 2", resultJson);
   }
 }
+
+export function getAccessTokenFromSessionStorage(): string | null {
+  return sessionStorage.getItem("access_token");
+}

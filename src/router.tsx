@@ -1,7 +1,7 @@
 import { Router } from "@tanstack/router";
-import rootRoute from "./routes/Root";
-import indexRoute from "./routes/Index";
-import aboutRoute from "./routes/About";
+import rootRoute from "./routes/root";
+import indexRoute from "./routes/index";
+import aboutRoute from "./routes/about";
 import {
   authenticatedIndexRoute,
   authenticatedRoute,
