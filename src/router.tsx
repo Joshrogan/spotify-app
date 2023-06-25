@@ -2,15 +2,12 @@ import { Router } from "@tanstack/router";
 import rootRoute from "./routes/root";
 import indexRoute from "./routes/index";
 import aboutRoute from "./routes/about";
-import {
-  authenticatedIndexRoute,
-  authenticatedRoute,
-} from "./routes/authenticated";
+import { callbackRoute } from "./routes/callback";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
-  authenticatedRoute.addChildren([authenticatedIndexRoute]),
+  callbackRoute,
 ]);
 
 export const router = new Router({

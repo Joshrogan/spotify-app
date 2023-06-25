@@ -34,14 +34,11 @@ async function fetchWebApi(
   return json;
 }
 
-export async function getTopTracks(accessToken: string | undefined) {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
-  if (accessToken) {
-    const getTopTracksJson = await fetchWebApi(
-      "v1/me/top/tracks?time_range=short_term&limit=5",
-      "GET",
-      accessToken
-    );
-    return getTopTracksJson;
-  }
+export async function fetchProfile(code: string): Promise<any> {
+  const result = await fetch("https://api.spotify.com/v1/me", {
+    method: "GET",
+    headers: { Authorization: `Bearer ${code}` },
+  });
+
+  return await result.json();
 }

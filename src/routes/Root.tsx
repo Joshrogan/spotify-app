@@ -6,7 +6,6 @@ export const rootRoute = new RootRoute({
       <>
         <div>
           <Link to="/">Home</Link> <Link to="/about">About</Link>{" "}
-          <Link to="/authenticated">Authenticated</Link>
         </div>
         <hr />
         <Outlet />
