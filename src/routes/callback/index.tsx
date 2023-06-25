@@ -1,4 +1,5 @@
 import { Route } from "@tanstack/router";
+import { router } from "../../router";
 import { z } from "zod";
 import { rootRoute } from "../root";
 import { getAccessToken } from "../../spotify/auth/authorize";
@@ -26,6 +27,8 @@ export const callbackRoute = new Route({
 
       const tracks = await fetchProfile(accessToken);
       console.log("### tracks", tracks);
+      // store token in authProvider
+      // router.navigate({ to: "/dashboard" });
     }
     if (existingToken) {
       const tracks = await fetchProfile(existingToken);
@@ -33,3 +36,5 @@ export const callbackRoute = new Route({
     }
   },
 });
+
+// 0.
