@@ -8,7 +8,7 @@ const callbackRouteSchema = z.object({
   code: z.string().optional(),
 });
 
-type CallbackRoute = z.infer<typeof callbackRouteSchema>;
+// type CallbackRoute = z.infer<typeof callbackRouteSchema>;
 
 export const callbackRoute = new Route({
   getParentRoute: () => rootRoute,
