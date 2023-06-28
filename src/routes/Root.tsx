@@ -4,7 +4,8 @@ import { useAuth } from "../components/useAuth";
 const rootRoute = new RootRoute({
   component: function Root() {
     const auth = useAuth();
-    console.log(auth.accessToken);
+    console.log(auth);
+
     return (
       <>
         <div>

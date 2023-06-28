@@ -35,7 +35,6 @@ export async function getAccessToken(code: string) {
   });
 
   const { access_token } = await result.json();
-  sessionStorage.setItem("accessToken", access_token);
   return access_token;
 }
 

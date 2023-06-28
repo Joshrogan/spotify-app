@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Route, useSearch } from "@tanstack/router";
 import { router } from "../../router";
 import { z } from "zod";
@@ -17,24 +17,29 @@ export const callbackRoute = new Route({
   path: "callback",
   validateSearch: callbackRouteSchema,
   component: function Callback() {
-    const auth = useAuth();
+    const { accessToken, login, status } = useAuth();
     const { code } = useSearch({ from: callbackRoute.id });
+    const fetchingAccessToken = useRef(false);
 
     React.useEffect(() => {
       async function getToken() {
-        if (code && !auth?.accessToken && auth.status === "loggedOut") {
+        if (code && !accessToken && status !== "loggedIn") {
           const accessToken = await getAccessToken(code);
-          auth.login(accessToken);
+          login(accessToken);
           router.navigate({ to: "/about" });
         } else {
           router.navigate({ to: "/" });
         }
       }
-      getToken();
-    }, [code, auth]);
+      if (fetchingAccessToken.current === false) {
+        getToken();
+      }
+
+      return () => {
+        fetchingAccessToken.current = true;
+      };
+    }, [login, status, code, accessToken]);
 
     return <div>Callback</div>;
   },
 });
-
-//       const tracks = await fetchProfile(accessToken);
