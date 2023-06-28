@@ -9,7 +9,7 @@ const rootRoute = new RootRoute({
     return (
       <>
         <div>
-          <Link to="/">Home</Link> <Link to="/about">About</Link>{" "}
+          <Link to="/">Home</Link> <Link to="/dashboard">Dashboard</Link>{" "}
         </div>
         <hr />
         <Outlet />

@@ -26,7 +26,7 @@ export const callbackRoute = new Route({
         if (code && !accessToken && status !== "loggedIn") {
           const accessToken = await getAccessToken(code);
           login(accessToken);
-          router.navigate({ to: "/about" });
+          router.navigate({ to: "/dashboard" });
         } else {
           router.navigate({ to: "/" });
         }

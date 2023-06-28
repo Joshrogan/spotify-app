@@ -1,14 +1,13 @@
-// import React from "react";
 import { Router } from "@tanstack/router";
 import rootRoute from "./routes/root";
 import indexRoute from "./routes/index";
-import aboutRoute from "./routes/about";
+import dashboardRoute from "./routes/dashboard/dashboard";
+import dashboardIndexRoute from "./routes/dashboard/dashboardIndex";
 import { callbackRoute } from "./routes/callback";
-// import { AuthContext } from "./components/AuthProvider";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
-  aboutRoute,
+  dashboardRoute.addChildren([dashboardIndexRoute]),
   callbackRoute,
 ]);
 
