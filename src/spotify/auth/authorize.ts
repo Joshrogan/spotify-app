@@ -26,7 +26,7 @@ export async function getAccessToken(code: string) {
   params.append("grant_type", "authorization_code");
   params.append("code", code);
   params.append("redirect_uri", redirectUri);
-  params.append("code_verifier", verifier!);
+  params.append("code_verifier", verifier ? verifier : "");
 
   const result = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -41,7 +41,7 @@ export async function getAccessToken(code: string) {
 
 function generateCodeVerifier(length: number) {
   let text = "";
-  let possible =
+  const possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
   for (let i = 0; i < length; i++) {

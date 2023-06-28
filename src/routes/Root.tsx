@@ -1,7 +1,10 @@
 import { Outlet, Link, RootRoute } from "@tanstack/router";
+import { useAuth } from "../components/useAuth";
 
-export const rootRoute = new RootRoute({
-  component: () => {
+const rootRoute = new RootRoute({
+  component: function Root() {
+    const auth = useAuth();
+    console.log(auth.accessToken);
     return (
       <>
         <div>

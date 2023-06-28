@@ -1,25 +1,25 @@
 import React from "react";
 
 type AuthContext = {
-  login: (username: string) => void;
+  login: (accessToken: string) => void;
   logout: () => void;
 } & AuthContextState;
 
 type AuthContextState = {
   status: "loggedOut" | "loggedIn";
-  username?: string;
+  accessToken?: string;
 };
 
 // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
-const AuthContext = React.createContext<AuthContext>(null!);
+export const AuthContext = React.createContext<AuthContext>(null!);
 
 export function AuthProvider(props: { children: React.ReactNode }) {
   const [state, setState] = React.useState<AuthContextState>({
     status: "loggedOut",
   });
 
-  const login = (username: string) => {
-    setState({ status: "loggedIn", username });
+  const login = (accessToken: string) => {
+    setState({ status: "loggedIn", accessToken });
   };
 
   const logout = () => {
@@ -38,8 +38,4 @@ export function AuthProvider(props: { children: React.ReactNode }) {
   return (
     <AuthContext.Provider value={contextValue} children={props.children} />
   );
-}
-
-export function useAuth() {
-  return React.useContext(AuthContext);
 }
