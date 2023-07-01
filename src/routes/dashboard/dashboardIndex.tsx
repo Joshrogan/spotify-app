@@ -12,7 +12,7 @@ const dashboardIndexRoute = new Route({
 
     const { data, isLoading, isError } = useQuery(
       ["todo", auth.accessToken],
-      () => fetchProfile(auth.accessToken)
+      fetchProfile
     );
 
     if (isLoading) return <div>Loading...</div>;

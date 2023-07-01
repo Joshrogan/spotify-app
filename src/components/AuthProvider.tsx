@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export type AuthContextType = {
   login: (accessToken: string) => void;
@@ -20,10 +21,12 @@ export function AuthProvider(props: { children: React.ReactNode }) {
 
   const login = (accessToken: string) => {
     setState({ status: "loggedIn", accessToken });
+    axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken;
   };
 
   const logout = () => {
     setState({ status: "loggedOut" });
+    delete axios.defaults.headers.common["Authorization"];
   };
 
   const contextValue = React.useMemo(
