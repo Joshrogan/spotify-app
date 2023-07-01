@@ -34,10 +34,15 @@ async function fetchWebApi(
   return json;
 }
 
-export async function fetchProfile(code: string): Promise<any> {
+export async function fetchProfile(
+  accessToken: string | undefined
+): Promise<any> {
+  if (!accessToken) {
+    throw new Error("No code provided");
+  }
   const result = await fetch("https://api.spotify.com/v1/me", {
     method: "GET",
-    headers: { Authorization: `Bearer ${code}` },
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
 
   return await result.json();

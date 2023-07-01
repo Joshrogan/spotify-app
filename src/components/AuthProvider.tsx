@@ -1,6 +1,6 @@
 import React from "react";
 
-type AuthContext = {
+export type AuthContextType = {
   login: (accessToken: string) => void;
   logout: () => void;
 } & AuthContextState;
@@ -11,7 +11,7 @@ type AuthContextState = {
 };
 
 // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
-export const AuthContext = React.createContext<AuthContext>(null!);
+export const AuthContext = React.createContext<AuthContextType>(null!);
 
 export function AuthProvider(props: { children: React.ReactNode }) {
   const [state, setState] = React.useState<AuthContextState>({
