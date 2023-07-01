@@ -1,19 +1,12 @@
 import { Route } from "@tanstack/router";
-import { useQuery } from "@tanstack/react-query";
 import dashboardRoute from "./dashboard";
-import { useAuth } from "../../components/useAuth";
-import { fetchProfile } from "../../spotify/apis/getTopTracks";
+import { useUserProfile } from "../../spotify/apis/useSpotifyAPI";
 
 const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRoute,
   path: "/",
   component: function DashboardIndex() {
-    const auth = useAuth();
-
-    const { data, isLoading, isError } = useQuery(
-      ["todo", auth.accessToken],
-      fetchProfile
-    );
+    const { data, isLoading, isError } = useUserProfile();
 
     if (isLoading) return <div>Loading...</div>;
 

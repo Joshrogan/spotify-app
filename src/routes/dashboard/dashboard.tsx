@@ -1,15 +1,14 @@
 import { Route, Outlet } from "@tanstack/router";
 import rootRoute from "../root";
 import { useAuth } from "../../components/useAuth";
+import { useUserProfile } from "../../spotify/apis/useSpotifyAPI";
 
 const dashboardRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/dashboard",
-  loader: async ({ context }) => {
-    console.log(context.queryClient);
-  },
   component: function Dashboard() {
     const auth = useAuth();
+
     return auth.status === "loggedIn" ? (
       <Outlet />
     ) : (
