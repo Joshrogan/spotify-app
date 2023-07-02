@@ -1,12 +1,20 @@
 import { Route } from "@tanstack/router";
 import dashboardRoute from "./dashboard";
-import { useUserProfile } from "../../spotify/apis/useSpotifyAPI";
+import {
+  useUserProfile,
+  useUsersTopList,
+} from "../../spotify/apis/useSpotifyAPI";
 
 const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRoute,
   path: "/",
   component: function DashboardIndex() {
-    const { data, isLoading, isError } = useUserProfile();
+    const { data: userProfileData } = useUserProfile();
+    const {
+      data: userTopArtistsData,
+      isLoading,
+      isError,
+    } = useUsersTopList("artist");
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -16,7 +24,8 @@ const dashboardIndexRoute = new Route({
       <div className="p-2">
         <div className="p-2">
           Welcome to the dashboard! here's your auth:
-          {JSON.stringify(data)}
+          {JSON.stringify(userTopArtistsData)}
+          {JSON.stringify(userProfileData)}
         </div>
       </div>
     );

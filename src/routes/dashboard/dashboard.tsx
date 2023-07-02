@@ -1,7 +1,6 @@
 import { Route, Outlet } from "@tanstack/router";
 import rootRoute from "../root";
 import { useAuth } from "../../components/useAuth";
-import { useUserProfile } from "../../spotify/apis/useSpotifyAPI";
 
 const dashboardRoute = new Route({
   getParentRoute: () => rootRoute,
