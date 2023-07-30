@@ -12,7 +12,7 @@ const rootRoute = RootRoute.withRouterContext<MyRouterContext>()({
     return (
       <QueryClientProvider client={queryClient}>
         <div className="flex h-screen flex-col">
-          <nav className="flex items-center justify-between bg-orange-400 p-4">
+          <nav className="flex items-center justify-between bg-pink-400 p-4">
             <ul className="flex space-x-4">
               {(
                 [
