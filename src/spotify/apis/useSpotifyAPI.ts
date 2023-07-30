@@ -75,6 +75,7 @@ export const useUserProfile = () => {
   return useQuery({
     queryKey: userProfileKeys.me(),
     queryFn: fetchUserProfile,
+    staleTime: 1000 * 60 * 60 * 24,
   });
 };
 
@@ -95,5 +96,6 @@ export const useUsersTopList = (type: ListType) => {
   return useQuery({
     queryKey: userProfileKeys.topList(type),
     queryFn: fetchUsersTopList,
+    staleTime: 1000 * 60 * 60 * 24,
   });
 };

@@ -8,7 +8,6 @@ export const indexRoute = new Route({
   path: "/",
   component: function Index() {
     const auth = useAuth();
-    console.log(auth);
     if (auth.status === "loggedIn") {
       return (
         <div>
