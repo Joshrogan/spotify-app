@@ -12,7 +12,7 @@ const rootRoute = RootRoute.withRouterContext<MyRouterContext>()({
     return (
       <QueryClientProvider client={queryClient}>
         <div className="flex h-screen flex-col">
-          <nav className="flex items-center justify-between bg-pink-400 p-4">
+          <nav className="flex items-center justify-between bg-purple-400 p-4">
             <ul className="flex space-x-4">
               {(
                 [
@@ -27,9 +27,9 @@ const rootRoute = RootRoute.withRouterContext<MyRouterContext>()({
                       activeOptions={{
                         exact: to === "/",
                       }}
-                      className={` text-white `}
+                      className={` text-white font-mono `}
                       activeProps={{
-                        className: ` text-black underline`,
+                        className: ` text-black underline decoration-4`,
                       }}
                     >
                       {label}
