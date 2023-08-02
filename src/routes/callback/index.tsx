@@ -3,8 +3,8 @@ import { Route, useSearch } from "@tanstack/router";
 import { router } from "../../router";
 import { z } from "zod";
 import rootRoute from "../root";
-import { getAccessToken } from "../../spotify/auth/authorize";
-import { useAuth } from "../../components/useAuth";
+import { getAccessToken } from "../../spotify/oauth/authorize";
+import { useAuth } from "../../components/auth/useAuth";
 
 const callbackRouteSchema = z.object({
   code: z.string().optional(),

@@ -1,6 +1,6 @@
 import { Route, Outlet } from "@tanstack/router";
 import rootRoute from "../root";
-import { useAuth } from "../../components/useAuth";
+import { useAuth } from "../../components/auth/useAuth";
 
 const dashboardRoute = new Route({
   getParentRoute: () => rootRoute,

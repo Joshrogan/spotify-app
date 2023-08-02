@@ -1,7 +1,7 @@
 import { Route } from "@tanstack/router";
 import rootRoute from "./root";
-import { useAuth } from "../components/useAuth";
-import { redirectToAuthCodeFlow } from "../spotify/auth/authorize";
+import { useAuth } from "../components/auth/useAuth";
+import { redirectToAuthCodeFlow } from "../spotify/oauth/authorize";
 
 export const indexRoute = new Route({
   getParentRoute: () => rootRoute,

@@ -1,6 +1,6 @@
 import { RouterProvider } from "@tanstack/router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { AuthProvider } from "./components/AuthProvider";
+import { AuthProvider } from "./components/auth/AuthProvider";
 import { router } from "./router";
 
 export default function App() {
