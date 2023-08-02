@@ -10,3 +10,9 @@ Learn about Tanstack Query & Table, Zod, Typescript, Tailwind
 3. change spotify apis folder to api-hooks folder
 
 4. get rid of .env from github and deploy to github pages
+
+SPOTIFY SVG TO PUBLIC DIRECTORY
+
+https://www.youtube.com/watch?v=Y3yCB7CfjF4
+
+svg base url too
