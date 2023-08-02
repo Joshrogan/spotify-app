@@ -16,3 +16,5 @@ SPOTIFY SVG TO PUBLIC DIRECTORY
 https://www.youtube.com/watch?v=Y3yCB7CfjF4
 
 svg base url too
+
+https://github.com/orgs/pnpm/discussions/3367 pnpm issues
