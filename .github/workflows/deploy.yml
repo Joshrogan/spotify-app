@@ -41,8 +41,8 @@ jobs:
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
         run: npm run build
-      - name: Setup Pages
-                run: echo ${{secrets.SPOTIFY_CLIENT_ID}}
+      - name: Echo
+          run: echo ${{secrets.SPOTIFY_CLIENT_ID}} 
           echo ${#SPOTIFY_CLIENT_ID}
       - name: Setup Pages
         uses: actions/configure-pages@v3
