@@ -39,7 +39,7 @@ jobs:
         run: npm install
       - name: Build
         env:
-          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_ID: "${{ secrets.SPOTIFY_CLIENT_ID }}"
         run: npm run build
 
       - name: Setup Pages
