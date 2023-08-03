@@ -1,4 +1,4 @@
-export const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+export const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
 const redirectUri = "http://localhost:5173/callback";
 
 export async function redirectToAuthCodeFlow() {
