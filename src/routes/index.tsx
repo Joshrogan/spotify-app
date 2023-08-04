@@ -21,12 +21,15 @@ export const indexRoute = new Route({
     const { accessToken, login, status } = useAuth();
     const { code } = useSearch({ from: indexRoute.id });
     const fetchingAccessToken = useRef(false);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
       async function getToken() {
         if (code && !accessToken && status !== "loggedIn") {
+          setIsLoading(true);
           const accessToken = await getAccessToken(code);
           login(accessToken);
+          setIsLoading(false);
           router.navigate({ to: "/dashboard" });
         } else {
           router.navigate({ to: "/" });
@@ -41,12 +44,7 @@ export const indexRoute = new Route({
       };
     }, [login, status, code, accessToken]);
 
-    if (
-      !fetchingAccessToken.current &&
-      !accessToken &&
-      status !== "loggedIn" &&
-      code
-    ) {
+    if (isLoading) {
       return (
         <div role="status">
           <svg
