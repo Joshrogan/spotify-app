@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Route, useSearch } from "@tanstack/router";
 import { router } from "../router";
 import { z } from "zod";
@@ -19,7 +19,7 @@ export const rootIndexRoute = new Route({
   component: function Callback() {
     const { accessToken, login, status } = useAuth();
     const { code } = useSearch({ from: rootIndexRoute.id });
-    const fetchingAccessToken = useRef(false);
+    const fetchingAccessToken = React.useRef(false);
     const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {

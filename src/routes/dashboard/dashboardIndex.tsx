@@ -4,6 +4,7 @@ import {
   useUserProfile,
   useUsersTopList,
 } from "../../spotify/apis/useSpotifyAPI";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRoute,
@@ -16,7 +17,7 @@ const dashboardIndexRoute = new Route({
       isError,
     } = useUsersTopList("artist");
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <LoadingSpinner />;
 
     if (isError) return <div>Error</div>;
 
