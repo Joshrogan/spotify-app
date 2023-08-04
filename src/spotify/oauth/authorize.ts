@@ -8,7 +8,7 @@ export async function redirectToAuthCodeFlow() {
   localStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
-  params.append("client_id", clientId);
+  params.append("client_id", `${clientId}`);
   params.append("response_type", "code");
   params.append("redirect_uri", redirectUri);
   params.append("scope", "user-read-private user-read-email user-top-read");
