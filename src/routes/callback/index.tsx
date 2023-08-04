@@ -14,7 +14,7 @@ const callbackRouteSchema = z.object({
 
 export const callbackRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: "callback",
+  path: "/callback",
   validateSearch: callbackRouteSchema,
   component: function Callback() {
     const { accessToken, login, status } = useAuth();
