@@ -2,7 +2,7 @@ export const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 export const HOST_URL = import.meta.env.VITE_HOST_URL;
 const BASE = import.meta.env.BASE_URL;
 
-const redirectUri = decodeURI(`${HOST_URL}${BASE}callback`);
+const redirectUri = decodeURI(`${HOST_URL}${BASE}`);
 
 export async function redirectToAuthCodeFlow() {
   const verifier = generateCodeVerifier(128);
