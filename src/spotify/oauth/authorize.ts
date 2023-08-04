@@ -1,5 +1,7 @@
 export const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const redirectUri = "http://localhost:5173/callback";
+export const HOST_URL = import.meta.env.VITE_HOST_URL;
+export const BASE = import.meta.env.BASE;
+const redirectUri = `${BASE}callback`;
 
 export async function redirectToAuthCodeFlow() {
   const verifier = generateCodeVerifier(128);
@@ -8,6 +10,7 @@ export async function redirectToAuthCodeFlow() {
   localStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
+  console.log(redirectUri);
   params.append("client_id", `${clientId}`);
   params.append("response_type", "code");
   params.append("redirect_uri", redirectUri);
