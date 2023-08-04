@@ -41,7 +41,12 @@ export const indexRoute = new Route({
       };
     }, [login, status, code, accessToken]);
 
-    if (!fetchingAccessToken.current && !accessToken && status !== "loggedIn") {
+    if (
+      !fetchingAccessToken.current &&
+      !accessToken &&
+      status !== "loggedIn" &&
+      code
+    ) {
       return (
         <div role="status">
           <svg
