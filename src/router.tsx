@@ -5,6 +5,7 @@ import indexRoute from "./routes/index";
 import dashboardRoute from "./routes/dashboard/dashboard";
 import dashboardIndexRoute from "./routes/dashboard/dashboardIndex";
 import { callbackRoute } from "./routes/callback";
+const BASE = import.meta.env.BASE_URL;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -19,6 +20,7 @@ export const router = new Router({
   context: {
     queryClient,
   },
+  basepath: BASE,
 });
 
 declare module "@tanstack/router" {

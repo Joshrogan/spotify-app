@@ -1,12 +1,13 @@
 export const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 export const HOST_URL = import.meta.env.VITE_HOST_URL;
-export const BASE = import.meta.env.BASE;
-const redirectUri = `${BASE}callback`;
+const BASE = import.meta.env.BASE_URL;
+
+const redirectUri = decodeURI(`${HOST_URL}${BASE}callback`);
 
 export async function redirectToAuthCodeFlow() {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);
-
+  console.log(redirectUri);
   localStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
@@ -22,6 +23,7 @@ export async function redirectToAuthCodeFlow() {
 }
 
 export async function getAccessToken(code: string) {
+  console.log("## in here");
   const verifier = localStorage.getItem("verifier");
 
   const params = new URLSearchParams();
