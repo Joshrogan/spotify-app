@@ -7,11 +7,9 @@ const redirectUri = decodeURI(`${HOST_URL}${BASE}callback`);
 export async function redirectToAuthCodeFlow() {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);
-  console.log(redirectUri);
   localStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
-  console.log(redirectUri);
   params.append("client_id", `${clientId}`);
   params.append("response_type", "code");
   params.append("redirect_uri", redirectUri);
@@ -23,7 +21,6 @@ export async function redirectToAuthCodeFlow() {
 }
 
 export async function getAccessToken(code: string) {
-  console.log("## in here");
   const verifier = localStorage.getItem("verifier");
 
   const params = new URLSearchParams();
