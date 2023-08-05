@@ -67,7 +67,7 @@ export const rootIndexRoute = new Route({
               href="#"
               className="bg-white text-purple-600 py-2 px-6 rounded-full uppercase font-bold hover:bg-purple-600 hover:text-white transition"
             >
-              Login
+              Sign in with Spotify
             </a>
           </div>
         </div>
