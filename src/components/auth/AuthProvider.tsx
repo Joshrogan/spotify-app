@@ -22,6 +22,13 @@ export function AuthProvider(props: { children: React.ReactNode }) {
   const login = (accessToken: string) => {
     setState({ status: "loggedIn", accessToken });
     axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken;
+    history.replaceState &&
+      history.replaceState(
+        null,
+        "",
+        location.pathname +
+          location.search.replace(/[?&]code=[^&]+/, "").replace(/^&/, "?")
+      );
   };
 
   const logout = () => {
