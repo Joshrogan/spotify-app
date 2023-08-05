@@ -1,5 +1,6 @@
 import LoadingSpinner from "../common/LoadingSpinner";
 import { redirectToAuthCodeFlow } from "../../spotify/oauth/authorize";
+
 type Props = {
   isLoading: boolean;
 };
