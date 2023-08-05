@@ -3,7 +3,7 @@ import AuthButton from "./AuthButton";
 
 const NavBar = () => {
   return (
-    <nav className="flex items-center justify-between bg-purple-400 p-2">
+    <nav className="flex items-center justify-between bg-purple-600 p-2">
       <ul className="flex space-x-4">
         {(
           [

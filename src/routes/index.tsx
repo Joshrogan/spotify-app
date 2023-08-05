@@ -8,14 +8,14 @@ import { useAuth } from "../components/auth/useAuth";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import { redirectToAuthCodeFlow } from "../spotify/oauth/authorize";
 
-const callbackSchema = z.object({
+const spotifyCallbackSearchParamSchema = z.object({
   code: z.string().optional(),
 });
 
 export const rootIndexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/",
-  validateSearch: callbackSchema,
+  validateSearch: spotifyCallbackSearchParamSchema,
   component: function Callback() {
     const { accessToken, login, status } = useAuth();
     const { code } = useSearch({ from: rootIndexRoute.id });
@@ -55,9 +55,21 @@ export const rootIndexRoute = new Route({
       );
     } else {
       return (
-        <div>
-          <h3>need to login</h3>
-          <button onClick={() => redirectToAuthCodeFlow()}>Login</button>
+        <div className="flex items-center justify-center h-screen bg-gradient-to-r  from-pink-400 to-blue-500">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Explore your Spotify Data
+            </h1>
+            <p className="text-lg text-white mb-8">
+              Visualize your top artists, tracks, and genres
+            </p>
+            <a
+              href="#"
+              className="bg-white text-purple-600 py-2 px-6 rounded-full uppercase font-bold hover:bg-purple-600 hover:text-white transition"
+            >
+              Login
+            </a>
+          </div>
         </div>
       );
     }

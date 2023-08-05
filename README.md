@@ -3,3 +3,5 @@
 Learn about Tanstack Query & Table, Zod, Typescript, Tailwind
 
 # TODO
+
+0. 
