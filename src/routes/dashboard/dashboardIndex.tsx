@@ -1,17 +1,13 @@
 import { Route } from "@tanstack/router";
 import dashboardRoute from "./dashboard";
-import {
-  useUserProfile,
-  useUsersTopList,
-} from "../../spotify/apis/useSpotifyAPI";
-import LoadingSpinner from "../../components/common/LoadingSpinner";
+import { useUsersTopList } from "../../spotify/apis/useSpotifyAPI";
 import DashboardCard from "../../components/dashboard/DashboardCard";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRoute,
   path: "/",
   component: function DashboardIndex() {
-    const { data: userProfileData } = useUserProfile();
     const {
       data: userTopArtistsData,
       isLoading,
