@@ -9,10 +9,14 @@ const dashboardRoute = new Route({
     const auth = useAuth();
 
     return auth.status === "loggedIn" ? (
-      <Outlet />
+      <div className="h-max bg-gradient-to-r  from-blue-400 to-pink-500">
+        <Outlet />
+      </div>
     ) : (
-      <div>
-        <h3>Not logged in</h3>
+      <div className="flex items-center justify-center h-screen bg-gradient-to-r  from-blue-400 to-pink-500">
+        <h1 className="text-4xl font-bold text-white mb-4">
+          Can't display dashboard to logged out users
+        </h1>
       </div>
     );
   },

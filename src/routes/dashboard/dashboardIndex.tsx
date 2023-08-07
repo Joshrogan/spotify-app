@@ -5,6 +5,7 @@ import {
   useUsersTopList,
 } from "../../spotify/apis/useSpotifyAPI";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
+import DashboardCard from "../../components/dashboard/DashboardCard";
 
 const dashboardIndexRoute = new Route({
   getParentRoute: () => dashboardRoute,
@@ -22,12 +23,10 @@ const dashboardIndexRoute = new Route({
     if (isError) return <div>Error</div>;
 
     return (
-      <div className="p-2">
-        <div className="p-2">
-          Welcome to the dashboard! here's your auth:
-          {JSON.stringify(userTopArtistsData)}
-          {JSON.stringify(userProfileData)}
-        </div>
+      <div className="flex flex-wrap p-1 justify-center	">
+        {userTopArtistsData?.items.map((artist) => (
+          <DashboardCard name={artist.name} genres={artist.genres} />
+        ))}
       </div>
     );
   },

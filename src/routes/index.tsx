@@ -42,7 +42,7 @@ export const rootIndexRoute = new Route({
     }, [login, status, code, accessToken]);
 
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-r  from-pink-400 to-blue-500">
+      <div className="flex items-center justify-center h-full bg-gradient-to-r  from-pink-400 to-blue-500">
         {status === "loggedIn" ? (
           <LoggedInView />
         ) : (
