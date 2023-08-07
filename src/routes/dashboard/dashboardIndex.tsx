@@ -23,11 +23,16 @@ const dashboardIndexRoute = new Route({
     if (isError) return <div>Error</div>;
 
     return (
-      <div className="flex flex-wrap p-1 justify-center	">
-        {userTopArtistsData?.items.map((artist) => (
-          <DashboardCard name={artist.name} genres={artist.genres} />
-        ))}
-      </div>
+      <>
+        <h1 className="text-3xl font-bold text-white mb-4 text-center">
+          Your top artists
+        </h1>
+        <div className="flex flex-wrap p-1 justify-center	">
+          {userTopArtistsData?.items.map((artist) => (
+            <DashboardCard name={artist.name} genres={artist.genres} />
+          ))}
+        </div>
+      </>
     );
   },
 });
