@@ -9,7 +9,7 @@ const dashboardRoute = new Route({
     const auth = useAuth();
 
     return auth.status === "loggedIn" ? (
-      <div className="h-screen bg-gradient-to-r  from-blue-400 to-pink-500">
+      <div className="h-max bg-gradient-to-r  from-blue-400 to-pink-500">
         <Outlet />
       </div>
     ) : (
