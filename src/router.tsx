@@ -4,10 +4,13 @@ import rootRoute from "./routes/root";
 import rootIndexRoute from "./routes/index";
 import dashboardRoute from "./routes/dashboard/dashboard";
 import dashboardIndexRoute from "./routes/dashboard/dashboardIndex";
+import tableRoute from "./routes/table/table";
+import tableIndexRoute from "./routes/table/tableIndex";
 
 const routeTree = rootRoute.addChildren([
   rootIndexRoute,
   dashboardRoute.addChildren([dashboardIndexRoute]),
+  tableRoute.addChildren([tableIndexRoute]),
 ]);
 
 export const queryClient = new QueryClient();

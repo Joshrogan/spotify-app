@@ -9,6 +9,7 @@ const NavBar = () => {
           [
             ["/", "Home"],
             ["/dashboard", "Dashboard"],
+            ["/table", "Table"],
           ] as const
         ).map(([to, label]) => {
           return (
