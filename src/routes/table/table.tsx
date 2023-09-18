@@ -5,11 +5,11 @@ import { useAuth } from "../../components/auth/useAuth";
 const tableRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/table",
-  component: function Dashboard() {
+  component: function Table() {
     const auth = useAuth();
 
     return auth.status === "loggedIn" ? (
-      <div className="h-screen bg-gradient-to-r  from-blue-400 to-pink-500">
+      <div className="h-max bg-gradient-to-r  from-blue-400 to-pink-500">
         <Outlet />
       </div>
     ) : (
