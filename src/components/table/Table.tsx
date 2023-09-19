@@ -19,6 +19,20 @@ export const columns: ColumnDef<ItemType>[] = [
     header: "Name",
     cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
+  {
+    accessorKey: "genres",
+    header: "Genres",
+    cell: ({ row }) => {
+      const { genres } = row.original;
+      return (
+        <div className="capitalize">
+          {genres.map((genre: string) => (
+            <div key={genre}>{genre}</div>
+          ))}
+        </div>
+      );
+    },
+  },
 ];
 
 function Table() {

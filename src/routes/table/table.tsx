@@ -9,7 +9,7 @@ const tableRoute = new Route({
     const auth = useAuth();
 
     return auth.status === "loggedIn" ? (
-      <div className="min-h-screen bg-gradient-to-r  from-blue-400 to-pink-500">
+      <div className="min-h-screen h-max bg-gradient-to-r  from-blue-400 to-pink-500">
         <Outlet />
       </div>
     ) : (
