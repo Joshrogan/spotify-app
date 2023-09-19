@@ -75,21 +75,24 @@ function Table() {
   if (isError) return <div>Error</div>;
 
   return (
-    <div className="p-2 ">
+    <div className="container mx-auto mt-8">
       <input
         placeholder="Filter by name..."
         value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
           table.getColumn("name")?.setFilterValue(event.target.value)
         }
-        className="max-w-sm"
+        className="w-96 border-black border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-[#FFA6F6] active:shadow-[2px_2px_0px_rgba(0,0,0,1)]"
       />
-      <table>
+      <table className="min-w-full mt-4 border border-gray-700">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th
+                  className="bg-gray-800 text-gray-300 px-4 py-2"
+                  key={header.id}
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -105,7 +108,10 @@ function Table() {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
+                <td
+                  className="bg-gray-700 text-gray-200 px-4 py-2"
+                  key={cell.id}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
