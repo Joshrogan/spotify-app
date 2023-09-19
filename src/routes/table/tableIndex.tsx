@@ -8,28 +8,7 @@ const tableIndexRoute = new Route({
   getParentRoute: () => tableRoute,
   path: "/",
   component: function TableIndex() {
-    console.log("## table");
-    const {
-      data: userTopArtistsData,
-      isLoading,
-      isError,
-    } = useUsersTopList("artist");
-
-    if (isLoading) {
-      return (
-        <div className="h-screen">
-          <LoadingSpinner />
-        </div>
-      );
-    }
-
-    if (isError) return <div>Error</div>;
-
-    return (
-      <div className="pt-1">
-        <Table />
-      </div>
-    );
+    return <Table />;
   },
 });
 

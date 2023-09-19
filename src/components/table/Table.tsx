@@ -1,8 +1,15 @@
+import React from "react";
 import {
   ColumnDef,
-  useReactTable,
-  getCoreRowModel,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
   flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
 } from "@tanstack/react-table";
 import { ItemType, useUsersTopList } from "../../spotify/apis/useSpotifyAPI";
 import LoadingSpinner from "../common/LoadingSpinner";
@@ -16,6 +23,14 @@ export const columns: ColumnDef<ItemType>[] = [
 ];
 
 function Table() {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+
   const {
     data: userTopArtistsData,
     isLoading,
@@ -27,7 +42,19 @@ function Table() {
   const table = useReactTable({
     data: userTopArtistsData?.items ?? defaultData,
     columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
   });
 
   if (isLoading) return <LoadingSpinner />;
@@ -36,6 +63,14 @@ function Table() {
 
   return (
     <div className="p-2">
+      <input
+        placeholder="Filter by name..."
+        value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+        onChange={(event) =>
+          table.getColumn("name")?.setFilterValue(event.target.value)
+        }
+        className="max-w-sm"
+      />
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
