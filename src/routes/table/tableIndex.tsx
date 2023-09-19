@@ -3,6 +3,7 @@ import tableRoute from "./table";
 import { useUsersTopList } from "../../spotify/apis/useSpotifyAPI";
 import DashboardCard from "../../components/dashboard/DashboardCard";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
+import Table from "../../components/table/Table";
 
 const tableIndexRoute = new Route({
   getParentRoute: () => tableRoute,
@@ -26,14 +27,7 @@ const tableIndexRoute = new Route({
 
     return (
       <div className="pt-1">
-        <h1 className="text-3xl font-bold text-white mb-4 text-center">
-          Your top artists
-        </h1>
-        <div className="flex flex-wrap p-1 justify-center	">
-          {userTopArtistsData?.items.map((artist, i) => (
-            <DashboardCard key={i} name={artist.name} genres={artist.genres} />
-          ))}
-        </div>
+        <Table />
       </div>
     );
   },

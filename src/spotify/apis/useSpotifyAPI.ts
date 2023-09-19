@@ -60,6 +60,8 @@ const ListSchema = z.object({
 
 type ListType = z.TypeOf<typeof ItemSchema>["type"];
 
+export type ItemType = z.infer<typeof ItemSchema>;
+
 // type UserProfile = z.infer<typeof userProfileSchema>;
 
 const fetchUserProfile = async ({
