@@ -20,7 +20,7 @@ const rootRoute = RootRoute.withRouterContext<MyRouterContext>()({
   component: function Root() {
     return (
       <QueryClientProvider client={queryClient}>
-        <div className="flex h-screen flex-col">
+        <div className="flex flex-col">
           <NavBar />
           <Outlet />
         </div>

@@ -75,7 +75,7 @@ function Table() {
   if (isError) return <div>Error</div>;
 
   return (
-    <div className="p-2">
+    <div className="p-2 ">
       <input
         placeholder="Filter by name..."
         value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
