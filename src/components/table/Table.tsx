@@ -10,6 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { ItemType, useUsersTopList } from "../../spotify/apis/useSpotifyAPI";
 import LoadingSpinner from "../common/LoadingSpinner";
 
@@ -29,6 +30,28 @@ export const columns: ColumnDef<ItemType>[] = [
           {genres.map((genre: string) => (
             <div key={genre}>{genre}</div>
           ))}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "popularity",
+    header: ({ column }) => {
+      return (
+        <button
+          type="button"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Popularity
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </button>
+      );
+    },
+
+    cell: ({ row }) => {
+      return (
+        <div className="text-right font-medium">
+          {row.getValue("popularity") || 0}
         </div>
       );
     },
